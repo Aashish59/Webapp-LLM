@@ -23,6 +23,6 @@ def get_db():
 
 
 def create_tables():
-  Base.metadata.createall(binds=engine)
+  Base.metadata.create_all(bind=engine)
 
 

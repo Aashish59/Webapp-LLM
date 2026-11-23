@@ -1,4 +1,5 @@
-#Data validation for API using pydantic
+#Function of schemas.py Defines type of data that our api will be returning and type of data that our API will expect.
+
 from typing  import List, Optional, Dict
 from datetime import datetime
 from pydantic import BaseModel

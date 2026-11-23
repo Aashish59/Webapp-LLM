@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 from db.database import Base
 
 
-class Stroy(Base):
+class Story(Base):
   __tablename__="stories"
   #Every story needs to be unique identifier. Columns is piece of data we will store for any individual story
   id= Column(Integer, primary_key=True, index=True)
@@ -15,10 +15,11 @@ class Stroy(Base):
   created_at= Column(DateTime(timezone=True),server_default=func.now()) #func.now tells what the current time is.
   nodes= relationship("StoryNode",back_populates="story") #When we want to have relationship between different pieces of data, we create this relationship. It can be 1-1 or one to many or many to many. for this we will have one to many
 
+#Option or the path of the story
 class StoryNode(Base):
   __tablename__="story_nodes"
   id = Column(Integer, primary_key=True, index=True)
-  stroy_id = Column(Integer, ForeignKey("stories.id"), index=True) #stores the id of the story= use of foreign key
+  story_id = Column(Integer, ForeignKey("stories.id"), index=True) #stores the id of the story= use of foreign key
   content = Column(String)
   is_root = Column(Boolean, default= False)# to know if this is the first node
   is_ending = Column(Boolean, default=False)# to know if this is the ending node
